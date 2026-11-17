@@ -11,13 +11,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><!--/PWA-->
 <style>
 /* Layout: mobile-first single column that becomes a 2-3 column card grid on wide screens; sticky top bar, six-tab bottom bar. Palette and logo come from the Tumux desktop app. */
-:root{color-scheme:dark;--bg1:#0b0820;--bg2:#241050;--glow:rgba(139,92,246,.28);--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.13);--fg:#f3f0ff;--sub:#a79fc9;--track:rgba(255,255,255,.12);--solid:#1a1438;--field:#261e4d;--good:#34d399;--bad:#f87171;--acc:#8b5cf6;--acc2:#a78bfa;--acc3:#6d28d9;--amber:#f59e0b;--pink:#ec4899;--blue:#3b82f6;--bar:rgba(11,8,32,.92);--font:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){color-scheme:light;--bg1:#f6f3ff;--bg2:#e6deff;--glow:rgba(139,92,246,0);--card:rgba(255,255,255,.88);--line:rgba(139,92,246,.22);--fg:#1e1b3a;--sub:#6b6590;--track:rgba(139,92,246,.15);--solid:#fff;--field:#f1ecff;--good:#059669;--bad:#dc2626;--bar:rgba(246,243,255,.94)}}
-:root[data-theme="light"]{color-scheme:light;--bg1:#f6f3ff;--bg2:#e6deff;--glow:rgba(139,92,246,0);--card:rgba(255,255,255,.88);--line:rgba(139,92,246,.22);--fg:#1e1b3a;--sub:#6b6590;--track:rgba(139,92,246,.15);--solid:#fff;--field:#f1ecff;--good:#059669;--bad:#dc2626;--bar:rgba(246,243,255,.94)}
+:root{color-scheme:dark;--navbg:var(--solid);--navic:var(--sub);--on:#fff;--accT:var(--acc2);--bg1:#0b0820;--bg2:#241050;--glow:rgba(139,92,246,.28);--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.13);--fg:#f3f0ff;--sub:#a79fc9;--track:rgba(255,255,255,.12);--solid:#1a1438;--field:#261e4d;--good:#34d399;--bad:#f87171;--acc:#8b5cf6;--acc2:#a78bfa;--acc3:#6d28d9;--amber:#f59e0b;--pink:#ec4899;--blue:#3b82f6;--bar:rgba(11,8,32,.92);--font:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){color-scheme:light;--navbg:var(--fg);--navic:rgba(255,255,255,.62);--accT:var(--acc);--bg1:#f6f3ff;--bg2:#e6deff;--glow:rgba(139,92,246,0);--card:rgba(255,255,255,.88);--line:rgba(139,92,246,.22);--fg:#1e1b3a;--sub:#6b6590;--track:rgba(139,92,246,.15);--solid:#fff;--field:#f1ecff;--good:#059669;--bad:#dc2626;--bar:rgba(246,243,255,.94)}}
+:root[data-theme="light"]{color-scheme:light;--navbg:var(--fg);--navic:rgba(255,255,255,.62);--accT:var(--acc);--bg1:#f6f3ff;--bg2:#e6deff;--glow:rgba(139,92,246,0);--card:rgba(255,255,255,.88);--line:rgba(139,92,246,.22);--fg:#1e1b3a;--sub:#6b6590;--track:rgba(139,92,246,.15);--solid:#fff;--field:#f1ecff;--good:#059669;--bad:#dc2626;--bar:rgba(246,243,255,.94)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0}
 body{background-color:var(--bg1);background-image:radial-gradient(circle at 85% 6%,var(--glow),transparent 55%),linear-gradient(160deg,var(--bg1),var(--bg2));background-attachment:fixed;color:var(--fg);font:15px/1.45 var(--font);min-height:100vh;
- padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 104px}
+ padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 116px}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg1)}
 button,input,select{font:inherit;color:inherit}
 button{cursor:pointer}
@@ -37,16 +37,16 @@ main{max-width:1100px;margin:0 auto;padding-top:6px}
 .hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
 .hero{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin:6px 0 4px}
 .hero .g{font-size:24px;font-weight:700;line-height:1.15}
-.hero .n{font-size:clamp(28px,10vw,40px);font-weight:800;line-height:1.1;color:var(--acc2);background:none;border:0;padding:0;margin:0;text-align:left;display:block;max-width:100%;overflow-wrap:anywhere;font-family:inherit;cursor:pointer}
+.hero .n{font-size:clamp(28px,10vw,40px);font-weight:800;line-height:1.1;color:var(--accT);background:none;border:0;padding:0;margin:0;text-align:left;display:block;max-width:100%;overflow-wrap:anywhere;font-family:inherit;cursor:pointer}
 .hero .n small{display:block;font-size:11px;font-weight:500;color:var(--sub);margin-top:3px}
-:root[data-theme="light"] .hero .n{color:var(--acc)}
-@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .hero .n{color:var(--acc)}}
+:root[data-theme="light"] .hero .n{color:var(--accT)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .hero .n{color:var(--accT)}}
 .hero .tag{color:var(--sub);font-size:13px;margin-top:2px}
 .clk{text-align:right;flex:none}
 .clk b{display:block;font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
 .clk span{font-size:12px;color:var(--sub)}
 .btns{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 16px}
-.pill{border:0;border-radius:999px;padding:10px 18px;font-weight:700;font-size:14px;color:#fff;background:linear-gradient(135deg,var(--acc),var(--acc3));min-height:42px}
+.pill{border:0;border-radius:999px;padding:10px 18px;font-weight:700;font-size:14px;color:var(--on);background:linear-gradient(135deg,var(--acc),var(--acc3));min-height:42px}
 .pill.o{background:none;color:var(--fg);border:1.5px solid var(--acc)}
 .pill.s{padding:6px 13px;font-size:12.5px;min-height:34px}
 .pill.d{background:none;color:var(--bad);border:1.5px solid var(--bad)}
@@ -57,17 +57,17 @@ main{max-width:1100px;margin:0 auto;padding-top:6px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
 .stats small{display:block;color:var(--sub);font-size:11px}
 .stats b{font-size:14.5px;overflow-wrap:anywhere}
-.good{color:var(--good)}.bad{color:var(--bad)}.amb{color:var(--amber)}.acc{color:var(--acc2)}
+.good{color:var(--good)}.bad{color:var(--bad)}.amb{color:var(--amber)}.acc{color:var(--accT)}
 .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
 .cal .wd{font-size:11px;color:var(--sub);padding:4px 0}
 .cal button{border:0;background:none;border-radius:12px;aspect-ratio:1/0.92;min-height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:13px}
 .cal button.o{color:var(--sub);opacity:.55}
 .cal button.t{box-shadow:inset 0 0 0 1.5px var(--acc2)}
-.cal button.sel{background:linear-gradient(135deg,var(--acc2),var(--acc3));color:#fff;opacity:1}
+.cal button.sel{background:linear-gradient(135deg,var(--acc2),var(--acc3));color:var(--on);opacity:1}
 .cal .dots{display:flex;gap:2px;height:5px}
 .cal .dots i{width:4px;height:4px;border-radius:50%;background:var(--acc2)}
 .cal .dots i.e{background:var(--pink)}
-.cal button.sel .dots i{background:#fff}
+.cal button.sel .dots i{background:var(--on)}
 .list{display:flex;flex-direction:column}
 .li{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
 .li:first-child{border-top:0}
@@ -79,7 +79,7 @@ main{max-width:1100px;margin:0 auto;padding-top:6px}
 .empty{color:var(--sub);font-size:13.5px;padding:6px 0}
 .seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:14px;background:var(--track);margin-bottom:14px}
 .seg button{border:0;background:none;border-radius:10px;padding:10px;font-weight:700;color:var(--sub)}
-.seg button[aria-pressed="true"]{background:linear-gradient(135deg,var(--acc),var(--acc3));color:#fff}
+.seg button[aria-pressed="true"]{background:linear-gradient(135deg,var(--acc),var(--acc3));color:var(--on)}
 label{display:block;font-size:12.5px;color:var(--sub);margin:0 0 4px}
 input,select{width:100%;min-height:46px;border-radius:13px;border:1px solid var(--line);background:var(--field);padding:10px 12px;color:var(--fg)}
 input[type=checkbox]{width:22px;min-height:22px;height:22px}
@@ -91,12 +91,14 @@ input[type=checkbox]{width:22px;min-height:22px;height:22px}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;max-height:90vh;overflow:auto;background:var(--solid);border:1px solid var(--line);border-radius:26px 26px 0 0;
  padding:18px max(18px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));max-width:560px;margin:0 auto}
 .sheet h2{font-size:19px;margin-bottom:14px}
-nav{position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--bar);border-top:1px solid var(--line);backdrop-filter:blur(12px);display:grid;grid-template-columns:repeat(6,1fr);
- padding:6px max(6px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px))}
-nav button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;font-size:10.5px;color:var(--sub);min-height:50px;border-radius:14px}
-nav button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-nav button[aria-current="page"]{color:#fff;background:linear-gradient(135deg,var(--acc2),var(--acc3))}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(86px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg1);padding:10px 16px;border-radius:14px;z-index:60;font-size:14px;max-width:90%;text-align:center}
+nav{position:fixed;z-index:25;left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));max-width:520px;margin:0 auto;background:var(--navbg);border:1px solid var(--line);border-radius:999px;box-shadow:0 10px 28px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:space-between;gap:2px;padding:8px}
+nav button{flex:1 1 0;min-width:34px;height:46px;border:0;background:none;border-radius:999px;display:flex;align-items:center;justify-content:center;color:var(--navic);padding:0;transition:background .2s,color .2s}
+nav button svg{width:22px;height:22px;flex:none;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+nav .lb{max-width:0;opacity:0;overflow:hidden;white-space:nowrap;font-size:13px;font-weight:700;transition:max-width .25s,opacity .2s,margin .25s}
+nav button[aria-current="page"]{flex:0 0 auto;padding:0 14px;background:linear-gradient(135deg,var(--acc2),var(--acc3));color:var(--on)}
+nav button[aria-current="page"] .lb{max-width:84px;opacity:1;margin-left:7px}
+@media (prefers-reduced-motion:reduce){nav button,nav .lb{transition:none}}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(94px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg1);padding:10px 16px;border-radius:14px;z-index:60;font-size:14px;max-width:90%;text-align:center}
 .chips{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:6px}
 .ring{display:block;margin:0 auto;max-width:230px;width:100%}
 .legend{display:flex;flex-direction:column;gap:5px;margin-top:8px;font-size:13px}
@@ -104,7 +106,7 @@ nav button[aria-current="page"]{color:#fff;background:linear-gradient(135deg,var
 .legend b{margin-left:auto;font-variant-numeric:tabular-nums}
 .hab{display:grid;grid-template-columns:minmax(78px,1.6fr) repeat(7,1fr) 38px;align-items:center;gap:2px;min-width:0}
 .hab .hh{font-size:11px;color:var(--sub);text-align:center;padding-bottom:4px}
-.hab .hh.td{color:var(--acc2);font-weight:700}
+.hab .hh.td{color:var(--accT);font-weight:700}
 .hab .nm{display:flex;align-items:center;gap:7px;min-width:0;font-size:13.5px}
 .hab .nm span.tile{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:12px;flex:none}
 .hab .nm span.tx{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -121,6 +123,19 @@ nav button[aria-current="page"]{color:#fff;background:linear-gradient(135deg,var
 .keys button{height:62px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:22px;font-weight:600}
 .keys button:disabled{opacity:.4}
 @media (prefers-reduced-motion:no-preference){.toast{animation:up .18s ease-out}@keyframes up{from{opacity:0;transform:translate(-50%,8px)}}}
+.sw{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.swb{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);background:var(--field);border-radius:14px;padding:10px 12px;font-weight:600;min-height:48px;text-align:left}
+.swb i{width:26px;height:26px;border-radius:50%;flex:none}
+.swb[aria-pressed="true"]{border-color:var(--acc2)}
+.swb[aria-pressed="true"]::after{content:"\2713";margin-left:auto;color:var(--accT)}
+:root[data-accent="ocean"][data-theme="dark"]{--bg1:#06121f;--bg2:#0b2a4a;--glow:rgba(14,165,233,.28);--acc:#0ea5e9;--acc2:#38bdf8;--acc3:#0369a1;--solid:#0c1a2e;--field:#12294a;--bar:rgba(6,18,31,.92)}
+:root[data-accent="ocean"][data-theme="light"]{--bg1:#f0f8ff;--bg2:#d9ecfb;--line:rgba(14,165,233,.26);--field:#e6f3fd;--bar:rgba(240,248,255,.94);--track:rgba(14,165,233,.16);--acc:#0284c7;--acc2:#0ea5e9;--acc3:#0369a1}
+:root[data-accent="forest"][data-theme="dark"]{--bg1:#181820;--bg2:#1e222a;--glow:rgba(0,180,96,.14);--acc:#00b460;--acc2:#2fd68c;--acc3:#008a4a;--on:#03160c;--solid:#1e222a;--field:#262b35;--bar:rgba(24,24,32,.94)}
+:root[data-accent="forest"][data-theme="light"]{--bg1:#ffffff;--bg2:#f1fcf9;--fg:#131321;--sub:#5d6278;--card:rgba(255,255,255,.96);--line:rgba(19,19,33,.10);--track:rgba(251,226,180,.8);--field:#fdf3df;--solid:#ffffff;--bar:rgba(255,255,255,.96);--acc:#46f0d2;--acc2:#7cf5e0;--acc3:#14b8a0;--on:#131321;--accT:#087f6c}
+:root[data-accent="sunset"][data-theme="dark"]{--bg1:#05050e;--bg2:#10111c;--glow:rgba(246,180,6,.14);--acc:#f6b406;--acc2:#ffc72e;--acc3:#c98900;--on:#14100a;--solid:#10111c;--field:#1a1c28;--bar:rgba(5,5,14,.94)}
+:root[data-accent="sunset"][data-theme="light"]{--bg1:#fffdf5;--bg2:#fff6d1;--fg:#14141f;--sub:#6b6650;--card:rgba(255,255,255,.96);--line:rgba(120,90,0,.16);--track:rgba(255,204,0,.25);--field:#fff6d6;--solid:#ffffff;--bar:rgba(255,253,245,.96);--acc:#ffcc00;--acc2:#ffd633;--acc3:#e6a800;--on:#14141f;--accT:#9a6b00}
+:root[data-accent="candy"][data-theme="dark"]{--bg1:#121212;--bg2:#1a1a1a;--glow:rgba(221,4,38,.16);--acc:#dd0426;--acc2:#ff3d55;--acc3:#a8031d;--on:#ffffff;--solid:#1c1c1c;--field:#262626;--bar:rgba(18,18,18,.94)}
+:root[data-accent="candy"][data-theme="light"]{--bg1:#ffffff;--bg2:#fff4f5;--fg:#121212;--sub:#6a6a6a;--card:rgba(255,255,255,.96);--line:rgba(18,18,18,.10);--track:rgba(221,4,38,.12);--field:#f5f5f5;--solid:#ffffff;--bar:rgba(255,255,255,.96);--acc:#dd0426;--acc2:#ee1f3d;--acc3:#b0031e;--on:#ffffff;--accT:#dd0426}
 </style>
 </head>
 <body>
@@ -133,12 +148,12 @@ nav button[aria-current="page"]{color:#fff;background:linear-gradient(135deg,var
 <main id="app"></main>
 <div id="sheetHost"></div><div id="toastHost"></div><div id="lockHost"></div>
 <nav aria-label="Main" id="nav">
-  <button data-go="dashboard"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5.5 10v10h13V10"/></svg>Home</button>
-  <button data-go="calendar"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Calendar</button>
-  <button data-go="money"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></svg>Money</button>
-  <button data-go="budget"><svg viewBox="0 0 24 24"><circle cx="11" cy="13" r="8"/><path d="M13 3a8 8 0 0 1 8 8h-8z"/></svg>Budget</button>
-  <button data-go="goals"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>Goals</button>
-  <button data-go="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>Settings</button>
+  <button data-go="dashboard"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5.5 10v10h13V10"/></svg><span class="lb">Home</span></button>
+  <button data-go="calendar"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></svg><span class="lb">Calendar</span></button>
+  <button data-go="money"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></svg><span class="lb">Money</span></button>
+  <button data-go="budget"><svg viewBox="0 0 24 24"><circle cx="11" cy="13" r="8"/><path d="M13 3a8 8 0 0 1 8 8h-8z"/></svg><span class="lb">Budget</span></button>
+  <button data-go="goals"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><span class="lb">Goals</span></button>
+  <button data-go="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg><span class="lb">Settings</span></button>
 </nav>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <script>
@@ -167,7 +182,7 @@ function fdate(s,o){return pd(s).toLocaleDateString("en-GB",o)}
 var S={tx:[],goals:[],budgets:{},habits:[],habitLog:{},focus:[],events:[],reminded:{},usage:{},set:{theme:"",autoLock:5}};
 try{var raw=localStorage.getItem(KEY);if(raw){var p=JSON.parse(raw);if(p&&typeof p==="object"){for(var k in S)if(p[k]!==undefined)S[k]=p[k];S.set=Object.assign({theme:"",autoLock:5},S.set)}}}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
-function applyTheme(){var r=document.documentElement;if(S.set.theme)r.setAttribute("data-theme",S.set.theme);else r.removeAttribute("data-theme");
+function applyTheme(){var r=document.documentElement;r.setAttribute("data-theme",isDark()?"dark":"light");r.setAttribute("data-accent",S.set.accent||"purple");var ac=getComputedStyle(r).getPropertyValue("--acc").trim();if(ac)PAL[0]=ac;var mt=document.querySelector('meta[name="theme-color"]');if(mt)mt.setAttribute("content",getComputedStyle(r).getPropertyValue("--acc3").trim()||"#5b21b6");
   var dark=isDark();$("#themeIcon").innerHTML=dark?'<circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M5 5l1.8 1.8M17.2 17.2L19 19M5 19l1.8-1.8M17.2 6.8L19 5"/>':'<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/>'}
 function isDark(){return S.set.theme?S.set.theme==="dark":!matchMedia("(prefers-color-scheme: light)").matches}
 
@@ -245,7 +260,7 @@ function donutCard(){var m=mk(today()),c=byCat(m),tot=c.reduce(function(a,b){ret
   return'<div class="card"><h2>Spending · '+new Date().toLocaleDateString("en-GB",{month:"long"})+'</h2><svg class="ring" viewBox="0 0 120 120" style="max-width:190px;margin-top:6px" role="img" aria-label="Spending by category"><circle cx="60" cy="60" r="'+R+'" fill="none" stroke="var(--track)" stroke-width="16"/>'+seg+'<text x="60" y="58" text-anchor="middle" font-size="9" fill="var(--sub)">Total</text><text x="60" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="var(--fg)">'+compact(tot)+'</text></svg><div class="legend">'+c.slice(0,5).map(function(x,i){return'<div><span class="dot" style="background:'+PAL[i]+'"></span>'+esc(x[0])+'<b>'+Math.round(x[1]/tot*100)+'%</b></div>'}).join("")+'</div></div>'}
 function weekCard(){var days=[],max=1;for(var i=6;i>=0;i--){var d=addD(new Date(),-i),k=ymd(d),v=0;S.tx.forEach(function(t){if(t.type==="EXPENSE"&&t.date===k)v+=t.amount});days.push({l:d.toLocaleDateString("en-GB",{weekday:"short"}),v:v});max=Math.max(max,v)}
   var s="";days.forEach(function(x,i){var h=x.v?Math.max(4,x.v/max*84):0,X=i*40+8;s+='<rect x="'+X+'" y="'+(100-h)+'" width="26" height="'+h+'" rx="7" fill="url(#wg)" opacity="'+(i===6?1:.7)+'"/>'+(x.v?'<text x="'+(X+13)+'" y="'+(94-h)+'" text-anchor="middle" font-size="9" fill="var(--sub)">'+compact(x.v)+'</text>':"")+'<text x="'+(X+13)+'" y="118" text-anchor="middle" font-size="10" fill="var(--sub)">'+x.l+'</text>'});
-  return'<div class="card"><div class="hd"><h2>Last 7 Days</h2><span class="sub" style="font-size:12px">Spending</span></div><svg viewBox="0 0 290 124" width="100%" role="img" aria-label="Spending over the last 7 days"><defs><linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#6d28d9"/></linearGradient></defs><line x1="0" x2="290" y1="100.5" y2="100.5" stroke="var(--line)"/>'+s+'</svg></div>'}
+  return'<div class="card"><div class="hd"><h2>Last 7 Days</h2><span class="sub" style="font-size:12px">Spending</span></div><svg viewBox="0 0 290 124" width="100%" role="img" aria-label="Spending over the last 7 days"><defs><linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--acc2)"/><stop offset="1" style="stop-color:var(--acc3)"/></linearGradient></defs><line x1="0" x2="290" y1="100.5" y2="100.5" stroke="var(--line)"/>'+s+'</svg></div>'}
 function insights(){var o=[];if(!S.tx.length){return["Welcome to Tumux! You start at UGX 0. Add your first income to begin.","Log what you earn and spend each day and the charts fill in automatically.","Create a goal on the Goals page and move money into it as you save."]}
   var m=mk(today()),inc=sum("INCOME",m),exp=sum("EXPENSE",m),sv=sum("SAVING",m),day=new Date().getDate(),dim=new Date(new Date().getFullYear(),new Date().getMonth()+1,0).getDate();
   if(inc>0)o.push("You have spent <b>"+Math.round(100*exp/inc)+"%</b> of this month's income.");else if(exp>0)o.push("No income logged this month yet, but you have spent "+ugx(exp)+".");
@@ -268,7 +283,7 @@ function recentCard(){var l=sorted().slice(0,6);return'<div class="card wide"><h
 function fTime(){var s=Math.ceil(F.remaining);return pad(Math.floor(s/60))+":"+pad(s%60)}
 function focusCard(){var C=2*Math.PI*88,fr=Math.max(0,Math.min(1,F.remaining/(FM[F.mode][2]*60))),foc=F.mode==="FOCUS",n=0,mins=0;S.focus.forEach(function(x){if(x.date===today()){n++;mins+=x.minutes}});
   return'<div class="card"><h2 style="margin-bottom:10px">Focus Timer</h2><div class="chips">'+Object.keys(FM).map(function(k){return'<button class="pill s '+(k===F.mode?"":"o")+'" data-act="fmode" data-m="'+k+'">'+FM[k][0]+" "+FM[k][2]+'</button>'}).join("")+'</div>'
-  +'<svg class="ring" viewBox="0 0 200 200" role="timer" aria-label="Focus countdown"><defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+(foc?"#8b5cf6":"#10b981")+'"/><stop offset="1" stop-color="'+(foc?"#ec4899":"#06b6d4")+'"/></linearGradient></defs><circle cx="100" cy="100" r="88" fill="none" stroke="var(--track)" stroke-width="11"/><circle id="fring" cx="100" cy="100" r="88" fill="none" stroke="url(#fg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="'+C+'" stroke-dashoffset="'+C*(1-fr)+'" transform="rotate(-90 100 100)"/><text id="ftime" x="100" y="108" text-anchor="middle" font-size="40" fill="var(--fg)" class="num">'+fTime()+'</text><text id="flab" x="100" y="132" text-anchor="middle" font-size="13" fill="var(--sub)">'+(F.remaining<=0?"Done":FM[F.mode][1])+'</text></svg>'
+  +'<svg class="ring" viewBox="0 0 200 200" role="timer" aria-label="Focus countdown"><defs><linearGradient id="fg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" '+(foc?'style="stop-color:var(--acc)"':'stop-color="#10b981"')+'/><stop offset="1" '+(foc?'stop-color="#ec4899"':'stop-color="#06b6d4"')+'/></linearGradient></defs><circle cx="100" cy="100" r="88" fill="none" stroke="var(--track)" stroke-width="11"/><circle id="fring" cx="100" cy="100" r="88" fill="none" stroke="url(#fg)" stroke-width="11" stroke-linecap="round" stroke-dasharray="'+C+'" stroke-dashoffset="'+C*(1-fr)+'" transform="rotate(-90 100 100)"/><text id="ftime" x="100" y="108" text-anchor="middle" font-size="40" fill="var(--fg)" class="num">'+fTime()+'</text><text id="flab" x="100" y="132" text-anchor="middle" font-size="13" fill="var(--sub)">'+(F.remaining<=0?"Done":FM[F.mode][1])+'</text></svg>'
   +'<div class="btns" style="justify-content:center;margin:6px 0 8px"><button class="pill" id="fplay" data-act="fplay" style="min-width:110px">'+(F.running?"Pause":"Start")+'</button><button class="pill o" data-act="freset">Reset</button></div><div class="sub" style="font-size:12px;text-align:center">Today: '+n+' session'+(n===1?"":"s")+' · '+mins+' min focused</div></div>'}
 function habitsCard(){var ws=wstart(new Date()),td=today(),hd='<div></div>';
   for(var i=0;i<7;i++){var d=addD(ws,i);hd+='<div class="hh '+(ymd(d)===td?"td":"")+'">'+"MTWTFSS"[i]+'</div>'}hd+='<div class="hh">Streak</div>';
@@ -281,7 +296,7 @@ function usageOf(a,b){var t=0;for(var k in S.usage)if(k>=a&&k<=b)t+=S.usage[k];r
 function fdur(s){s=Math.floor(s);var h=Math.floor(s/3600),m=Math.floor(s%3600/60);return h?h+"h "+pad(m)+"m":m+"m "+pad(s%60)+"s"}
 function trackerCard(){return'<div class="card"><h2 style="margin-bottom:10px">Time in Tumux</h2><div class="stats" style="grid-template-columns:repeat(3,1fr);margin-top:0"><div><small>This session</small><b class="num acc" id="tses">'+fdur(T.session)+'</b></div><div><small>Today</small><b class="num" id="ttod">'+fdur(S.usage[today()]||0)+'</b></div><div><small>This week</small><b class="num" id="twk">'+fdur(usageOf(ymd(wstart(new Date())),today()))+'</b></div></div><div class="btns" style="margin:14px 0 4px"><button class="pill s o" data-act="tpause" id="tpause">'+(T.stopped?"Start":T.paused?"Resume":"Pause")+'</button><button class="pill s o" data-act="tstop">Stop</button></div><div class="sub" style="font-size:12px">Counts only while Tumux is open and unlocked.</div></div>'}
 function upcoming(n){var f=pd(today());return occs(f,addD(f,n))}
-function evRow(o,del){var days=Math.round((o.date-pd(today()))/864e5);return'<div class="li"><span class="dot" style="background:'+(KCOL[o.e.kind]||"#a78bfa")+'"></span><div class="m"><b>'+esc(o.e.title)+'</b><small>'+o.e.kind+" · "+fdate(ymd(o.date),{weekday:"short",day:"numeric",month:"short"})+(o.e.yearly?" · yearly":"")+'</small></div><b style="font-size:12.5px;color:var(--acc2)">'+(days===0?"Today":days===1?"Tomorrow":"In "+days+" days")+'</b>'+(del?'<button class="x" data-act="delev" data-id="'+o.e.id+'" aria-label="Delete event">×</button>':"")+'</div>'}
+function evRow(o,del){var days=Math.round((o.date-pd(today()))/864e5);return'<div class="li"><span class="dot" style="background:'+(KCOL[o.e.kind]||"#a78bfa")+'"></span><div class="m"><b>'+esc(o.e.title)+'</b><small>'+o.e.kind+" · "+fdate(ymd(o.date),{weekday:"short",day:"numeric",month:"short"})+(o.e.yearly?" · yearly":"")+'</small></div><b style="font-size:12.5px;color:var(--accT)">'+(days===0?"Today":days===1?"Tomorrow":"In "+days+" days")+'</b>'+(del?'<button class="x" data-act="delev" data-id="'+o.e.id+'" aria-label="Delete event">×</button>':"")+'</div>'}
 function eventsCard(){var l=upcoming(60).slice(0,6);return'<div class="card"><div class="hd"><h2>Upcoming Events</h2><button class="pill s" data-act="evnew">+ Add Event</button></div>'+(l.length?'<div class="list">'+l.map(function(o){return evRow(o)}).join("")+'</div>':'<div class="empty">Add birthdays, bills and meetings. Tumux reminds you when the day arrives.</div>')+'</div>'}
 
 /* ---------- pages ---------- */
@@ -301,9 +316,11 @@ function pBudget(){var m=mk(today()),k=Object.keys(S.budgets),lim=0,sp=0;k.forEa
 function pGoals(){var cards=S.goals.map(function(g){var p=g.target?Math.min(1,g.saved/g.target):0,dn=g.saved>=g.target,ex;if(dn)ex="Goal reached!";else{var left=g.target-g.saved;ex=ugx(left)+" to go";if(g.deadline){var d=Math.round((pd(g.deadline)-pd(today()))/864e5);ex+=d>0?" · "+d+" days left (save about "+ugx(Math.ceil(left/d))+" a day)":" · deadline passed"}}
   return'<div class="card"><div class="row"><b style="font-size:18px">'+esc(g.name)+'</b></div><div class="bar"><i style="width:'+p*100+'%;background:'+(dn?"var(--good)":"")+'"></i></div><div class="num '+(dn?"good":"acc")+'" style="font-weight:700;font-size:14px">'+ugx(g.saved)+" of "+ugx(g.target)+" · "+Math.round(p*100)+'%</div><div class="sub" style="font-size:13px;margin:2px 0 12px">'+ex+'</div><div class="btns" style="margin:0"><button class="pill s" data-act="contrib" data-id="'+g.id+'">Add Money</button><button class="pill s d" data-act="goaldel" data-id="'+g.id+'">Delete</button></div></div>'}).join("");
   return'<div class="row" style="margin-bottom:12px"><p class="sub" style="font-size:13px">Available balance: <b style="color:var(--fg)" class="num">'+ugx(balance())+'</b></p><button class="pill s" data-act="goalnew">+ New Goal</button></div><div class="grid">'+(cards||'<div class="card empty">No goals yet. Press + New Goal to set one, for example “New laptop” or “Emergency fund”.</div>')+'</div>'}
+var ACC=[["purple","Purple","#8b5cf6","#6d28d9"],["ocean","Ocean","#0ea5e9","#0369a1"],["forest","Forest","#46f0d2","#00b460"],["sunset","Sunset","#ffcc00","#c98900"],["candy","Candy Red","#dd0426","#121212"]];
 function hasPin(){return!!S.set.pinHash}
 function pSettings(){var standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone,notif="Notification" in window?Notification.permission:"unsupported";
   return'<div class="grid"><div class="card"><h2 style="margin-bottom:6px">Your name</h2><p class="sub" style="font-size:13px;margin-bottom:12px">The name shown on your dashboard greeting. Right now: <b style="color:var(--fg)">'+esc(S.set.userName||"Tumux")+'</b>. The app name and logo stay the same.</p><button class="pill s" data-act="namenew">Change my name</button></div><div class="card"><h2 style="margin-bottom:6px">Theme</h2><p class="sub" style="font-size:13px;margin-bottom:12px">Purple dark and light themes. The sun or moon button at the top also switches them.</p><div class="btns" style="margin:0"><button class="pill s '+(isDark()?"":"o")+'" data-act="theme" data-v="dark">Dark</button><button class="pill s '+(isDark()?"o":"")+'" data-act="theme" data-v="light">Light</button></div></div>'
+  +'<div class="card"><h2 style="margin-bottom:6px">Color theme</h2><p class="sub" style="font-size:13px;margin-bottom:12px">Pick the colors Tumux uses. Each one works in both dark and light mode.</p><div class="sw">'+ACC.map(function(a){return'<button class="swb" data-act="accent" data-v="'+a[0]+'" aria-pressed="'+((S.set.accent||"purple")===a[0])+'"><i style="background:linear-gradient(135deg,'+a[2]+','+a[3]+')"></i>'+a[1]+'</button>'}).join("")+'</div></div>'
   +'<div class="card"><h2 style="margin-bottom:6px">PIN lock</h2><p class="sub" style="font-size:13px;margin-bottom:12px">'+(hasPin()?"A PIN is set. Tumux asks for it on start, after the idle time below, and when you switch away.":"Set a 4-digit PIN to keep your finances private. Only a salted hash is saved on this phone.")+'</p><div class="btns" style="margin:0 0 10px"><button class="pill s" data-act="pinset">'+(hasPin()?"Change PIN":"Set a PIN")+'</button>'+(hasPin()?'<button class="pill s d" data-act="pinclear">Remove PIN</button>':"")+'</div>'
   +(hasPin()?'<label for="al">Lock after being idle</label><select id="al">'+[1,5,10,0].map(function(m){return'<option value="'+m+'"'+(+S.set.autoLock===m?" selected":"")+'>'+(m?m+" minute"+(m>1?"s":""):"Never")+'</option>'}).join("")+'</select>':"")+'</div>'
   +'<div class="card"><h2 style="margin-bottom:6px">Reminders</h2><p class="sub" style="font-size:13px;margin-bottom:12px">Event reminders appear when Tumux is open. Allow notifications to also get an alert from your phone.</p>'+(notif==="granted"?'<p class="good" style="font-size:13px">Notifications are on.</p>':notif==="unsupported"?'<p class="sub" style="font-size:13px">Notifications are not available here.</p>':'<button class="pill s" data-act="notif">Turn on notifications</button>')+'</div>'
@@ -386,6 +403,7 @@ var ACT={
  freset:function(){F.running=false;F.remaining=FM[F.mode][2]*60;render()},
  tpause:function(){if(T.stopped){T.stopped=false;T.paused=false;T.session=0}else T.paused=!T.paused;var b=$("#tpause");if(b)b.textContent=T.stopped?"Start":T.paused?"Resume":"Pause"},
  tstop:function(){T.stopped=true;T.paused=true;T.session=0;save();render()},
+ accent:function(el){S.set.accent=el.dataset.v;save();applyTheme();render()},
  theme:function(el){S.set.theme=el.dataset.v;save();applyTheme();render()},
  pinset:function(){sheet('<h2>'+(hasPin()?"Change PIN":"Set a PIN")+'</h2><form data-form="pin" novalidate>'+fld("p-a","New 4-digit PIN",'<input id="p-a" type="password" inputmode="numeric" maxlength="4" autocomplete="off">')+fld("p-b","Repeat the PIN",'<input id="p-b" type="password" inputmode="numeric" maxlength="4" autocomplete="off">')+'<div class="err" id="ferr"></div><button class="pill" style="width:100%">Save PIN</button></form>')},
  pinclear:function(){confirmSheet("Remove the PIN lock? Anyone who opens Tumux on this phone will see your finances.",function(){delete S.set.pinHash;delete S.set.pinSalt;save();render()},"Remove PIN")},
@@ -424,6 +442,7 @@ function checkReminders(){var t=pd(today()),lines=[],keys=[];
 setInterval(checkReminders,60000);
 
 /* ---------- start ---------- */
+try{matchMedia("(prefers-color-scheme: light)").addEventListener("change",function(){if(!S.set.theme){applyTheme();render()}})}catch(e){}
 applyTheme();
 if(hasPin())lockApp();else render();
 fetchWx();setInterval(fetchWx,30*60*1000);
